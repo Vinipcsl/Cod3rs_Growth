@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Cod3r’s_Growth/1.0.0": {
+        "runtime": {
+          "Cod3r’s_Growth.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Cod3r’s_Growth/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
