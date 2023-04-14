@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\source\\repos\\Cod3r’s_Growth\\Cod3r’s_Growth\\Cod3r’s_Growth.csproj": {}
+    "C:\\Users\\Usuario\\source\\repos\\Cod3rs_Growth\\Cod3r’s_Growth\\Cod3r’s_Growth.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\source\\repos\\Cod3r’s_Growth\\Cod3r’s_Growth\\Cod3r’s_Growth.csproj": {
+    "C:\\Users\\Usuario\\source\\repos\\Cod3rs_Growth\\Cod3r’s_Growth\\Cod3r’s_Growth.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\Cod3r’s_Growth\\Cod3r’s_Growth\\Cod3r’s_Growth.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\Cod3rs_Growth\\Cod3r’s_Growth\\Cod3r’s_Growth.csproj",
         "projectName": "Cod3r’s_Growth",
-        "projectPath": "C:\\Users\\Usuario\\source\\repos\\Cod3r’s_Growth\\Cod3r’s_Growth\\Cod3r’s_Growth.csproj",
+        "projectPath": "C:\\Users\\Usuario\\source\\repos\\Cod3rs_Growth\\Cod3r’s_Growth\\Cod3r’s_Growth.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\source\\repos\\Cod3r’s_Growth\\Cod3r’s_Growth\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\source\\repos\\Cod3rs_Growth\\Cod3r’s_Growth\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
