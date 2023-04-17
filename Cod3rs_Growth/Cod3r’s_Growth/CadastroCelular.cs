@@ -25,18 +25,9 @@ namespace Cod3r_s_Growth
         private void CadastroCelular_Load(object sender, System.EventArgs e)
         {
 
-
         }
-
-
-
         private void AoClicarEmSalvar_Click(object sender, System.EventArgs e)
         {
-            List<Celular> listaCelular = new();
-            Celular celular = new Celular();
-
-            TextoId.Show();
-
 
         }
 

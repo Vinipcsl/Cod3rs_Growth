@@ -8,15 +8,12 @@ namespace Cod3r_s_Growth
         {
             InitializeComponent();
 
-            List<Celular> listaCelular = new();
 
             listaCelular.AddRange(Array.Empty<Celular>());
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ListaCelular listaCelular = new ListaCelular();
-            Console.WriteLine(listaCelular);
             
            
         }
