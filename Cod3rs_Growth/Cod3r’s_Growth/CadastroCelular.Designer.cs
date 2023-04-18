@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             AoClicarEmSalvar = new Button();
-            AoClicarEmLimpar = new Button();
             AoClicarEmCancelar = new Button();
             TextoMarca = new TextBox();
             TextoModelo = new TextBox();
@@ -42,12 +41,13 @@
             label6 = new Label();
             TextoId = new TextBox();
             label1 = new Label();
-            DataFabricacao = new MonthCalendar();
+            DataFabricado = new DateTimePicker();
             SuspendLayout();
             // 
             // AoClicarEmSalvar
             // 
-            AoClicarEmSalvar.Location = new Point(142, 329);
+            AoClicarEmSalvar.ForeColor = SystemColors.ActiveCaptionText;
+            AoClicarEmSalvar.Location = new Point(12, 364);
             AoClicarEmSalvar.Name = "AoClicarEmSalvar";
             AoClicarEmSalvar.Size = new Size(75, 23);
             AoClicarEmSalvar.TabIndex = 0;
@@ -55,19 +55,10 @@
             AoClicarEmSalvar.UseVisualStyleBackColor = true;
             AoClicarEmSalvar.Click += AoClicarEmSalvar_Click;
             // 
-            // AoClicarEmLimpar
-            // 
-            AoClicarEmLimpar.Location = new Point(223, 329);
-            AoClicarEmLimpar.Name = "AoClicarEmLimpar";
-            AoClicarEmLimpar.Size = new Size(75, 23);
-            AoClicarEmLimpar.TabIndex = 1;
-            AoClicarEmLimpar.Text = "Limpar";
-            AoClicarEmLimpar.UseVisualStyleBackColor = true;
-            AoClicarEmLimpar.Click += AoClicarEmLimpar_Click;
-            // 
             // AoClicarEmCancelar
             // 
-            AoClicarEmCancelar.Location = new Point(304, 329);
+            AoClicarEmCancelar.ForeColor = SystemColors.ActiveCaptionText;
+            AoClicarEmCancelar.Location = new Point(182, 364);
             AoClicarEmCancelar.Name = "AoClicarEmCancelar";
             AoClicarEmCancelar.Size = new Size(75, 23);
             AoClicarEmCancelar.TabIndex = 2;
@@ -77,36 +68,36 @@
             // 
             // TextoMarca
             // 
-            TextoMarca.Location = new Point(12, 65);
+            TextoMarca.Location = new Point(14, 80);
             TextoMarca.Name = "TextoMarca";
-            TextoMarca.Size = new Size(100, 23);
+            TextoMarca.Size = new Size(243, 23);
             TextoMarca.TabIndex = 4;
             // 
             // TextoModelo
             // 
-            TextoModelo.Location = new Point(12, 109);
+            TextoModelo.Location = new Point(14, 139);
             TextoModelo.Name = "TextoModelo";
-            TextoModelo.Size = new Size(100, 23);
+            TextoModelo.Size = new Size(243, 23);
             TextoModelo.TabIndex = 5;
             // 
             // TextoMemoria
             // 
-            TextoMemoria.Location = new Point(12, 197);
+            TextoMemoria.Location = new Point(14, 245);
             TextoMemoria.Name = "TextoMemoria";
-            TextoMemoria.Size = new Size(100, 23);
+            TextoMemoria.Size = new Size(243, 23);
             TextoMemoria.TabIndex = 7;
             // 
             // TextoCor
             // 
-            TextoCor.Location = new Point(12, 153);
+            TextoCor.Location = new Point(12, 193);
             TextoCor.Name = "TextoCor";
-            TextoCor.Size = new Size(100, 23);
+            TextoCor.Size = new Size(245, 23);
             TextoCor.TabIndex = 6;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 47);
+            label2.Location = new Point(12, 62);
             label2.Name = "label2";
             label2.Size = new Size(40, 15);
             label2.TabIndex = 10;
@@ -115,7 +106,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 91);
+            label3.Location = new Point(14, 121);
             label3.Name = "label3";
             label3.Size = new Size(48, 15);
             label3.TabIndex = 11;
@@ -124,7 +115,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 135);
+            label4.Location = new Point(12, 175);
             label4.Name = "label4";
             label4.Size = new Size(26, 15);
             label4.TabIndex = 12;
@@ -133,7 +124,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(12, 179);
+            label5.Location = new Point(14, 227);
             label5.Name = "label5";
             label5.Size = new Size(55, 15);
             label5.TabIndex = 13;
@@ -142,40 +133,44 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(332, 3);
+            label6.Location = new Point(12, 280);
             label6.Name = "label6";
             label6.Size = new Size(84, 15);
             label6.TabIndex = 14;
             label6.Text = "Ano Fabricado";
+            label6.Click += label6_Click;
             // 
             // TextoId
             // 
-            TextoId.Location = new Point(12, 21);
+            TextoId.Location = new Point(14, 28);
             TextoId.Name = "TextoId";
-            TextoId.Size = new Size(100, 23);
+            TextoId.Size = new Size(243, 23);
             TextoId.TabIndex = 15;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(14, 3);
+            label1.Location = new Point(16, 10);
             label1.Name = "label1";
             label1.Size = new Size(18, 15);
             label1.TabIndex = 16;
             label1.Text = "ID";
             // 
-            // DataFabricacao
+            // DataFabricado
             // 
-            DataFabricacao.Location = new Point(268, 21);
-            DataFabricacao.Name = "DataFabricacao";
-            DataFabricacao.TabIndex = 17;
+            DataFabricado.Format = DateTimePickerFormat.Short;
+            DataFabricado.Location = new Point(12, 298);
+            DataFabricado.Name = "DataFabricado";
+            DataFabricado.Size = new Size(245, 23);
+            DataFabricado.TabIndex = 18;
             // 
             // CadastroCelular
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(513, 364);
-            Controls.Add(DataFabricacao);
+            BackColor = SystemColors.MenuHighlight;
+            ClientSize = new Size(281, 414);
+            Controls.Add(DataFabricado);
             Controls.Add(label1);
             Controls.Add(TextoId);
             Controls.Add(label6);
@@ -188,8 +183,8 @@
             Controls.Add(TextoModelo);
             Controls.Add(TextoMarca);
             Controls.Add(AoClicarEmCancelar);
-            Controls.Add(AoClicarEmLimpar);
             Controls.Add(AoClicarEmSalvar);
+            ForeColor = SystemColors.ControlLightLight;
             Name = "CadastroCelular";
             Text = "CadastroCelular";
             Load += CadastroCelular_Load;
@@ -200,7 +195,6 @@
         #endregion
 
         private Button AoClicarEmSalvar;
-        private Button AoClicarEmLimpar;
         private Button AoClicarEmCancelar;
         private TextBox TextoMarca;
         private TextBox TextoModelo;
@@ -213,6 +207,6 @@
         private Label label6;
         private TextBox TextoId;
         private Label label1;
-        private MonthCalendar DataFabricacao;
+        private DateTimePicker DataFabricado;
     }
 }
