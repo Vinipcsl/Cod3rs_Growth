@@ -33,7 +33,6 @@
             AoClicarEmCancelar = new Button();
             TextoMarca = new TextBox();
             TextoModelo = new TextBox();
-            TextoAnoFabricado = new TextBox();
             TextoMemoria = new TextBox();
             TextoCor = new TextBox();
             label2 = new Label();
@@ -43,11 +42,12 @@
             label6 = new Label();
             TextoId = new TextBox();
             label1 = new Label();
+            DataFabricacao = new MonthCalendar();
             SuspendLayout();
             // 
             // AoClicarEmSalvar
             // 
-            AoClicarEmSalvar.Location = new Point(65, 318);
+            AoClicarEmSalvar.Location = new Point(142, 329);
             AoClicarEmSalvar.Name = "AoClicarEmSalvar";
             AoClicarEmSalvar.Size = new Size(75, 23);
             AoClicarEmSalvar.TabIndex = 0;
@@ -57,7 +57,7 @@
             // 
             // AoClicarEmLimpar
             // 
-            AoClicarEmLimpar.Location = new Point(146, 318);
+            AoClicarEmLimpar.Location = new Point(223, 329);
             AoClicarEmLimpar.Name = "AoClicarEmLimpar";
             AoClicarEmLimpar.Size = new Size(75, 23);
             AoClicarEmLimpar.TabIndex = 1;
@@ -67,7 +67,7 @@
             // 
             // AoClicarEmCancelar
             // 
-            AoClicarEmCancelar.Location = new Point(227, 318);
+            AoClicarEmCancelar.Location = new Point(304, 329);
             AoClicarEmCancelar.Name = "AoClicarEmCancelar";
             AoClicarEmCancelar.Size = new Size(75, 23);
             AoClicarEmCancelar.TabIndex = 2;
@@ -88,13 +88,6 @@
             TextoModelo.Name = "TextoModelo";
             TextoModelo.Size = new Size(100, 23);
             TextoModelo.TabIndex = 5;
-            // 
-            // TextoAnoFabricado
-            // 
-            TextoAnoFabricado.Location = new Point(12, 241);
-            TextoAnoFabricado.Name = "TextoAnoFabricado";
-            TextoAnoFabricado.Size = new Size(100, 23);
-            TextoAnoFabricado.TabIndex = 8;
             // 
             // TextoMemoria
             // 
@@ -149,7 +142,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(12, 223);
+            label6.Location = new Point(332, 3);
             label6.Name = "label6";
             label6.Size = new Size(84, 15);
             label6.TabIndex = 14;
@@ -171,11 +164,18 @@
             label1.TabIndex = 16;
             label1.Text = "ID";
             // 
+            // DataFabricacao
+            // 
+            DataFabricacao.Location = new Point(268, 21);
+            DataFabricacao.Name = "DataFabricacao";
+            DataFabricacao.TabIndex = 17;
+            // 
             // CadastroCelular
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(378, 353);
+            ClientSize = new Size(513, 364);
+            Controls.Add(DataFabricacao);
             Controls.Add(label1);
             Controls.Add(TextoId);
             Controls.Add(label6);
@@ -183,7 +183,6 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(TextoAnoFabricado);
             Controls.Add(TextoMemoria);
             Controls.Add(TextoCor);
             Controls.Add(TextoModelo);
@@ -205,7 +204,6 @@
         private Button AoClicarEmCancelar;
         private TextBox TextoMarca;
         private TextBox TextoModelo;
-        private TextBox TextoAnoFabricado;
         private TextBox TextoMemoria;
         private TextBox TextoCor;
         private Label label2;
@@ -215,5 +213,6 @@
         private Label label6;
         private TextBox TextoId;
         private Label label1;
+        private MonthCalendar DataFabricacao;
     }
 }

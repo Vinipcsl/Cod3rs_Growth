@@ -31,6 +31,8 @@
             AoClicarEmCadastrar = new Button();
             AoClicarEmAtualizar = new Button();
             AoClicarEmDeletar = new Button();
+            Dt_Lista = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)Dt_Lista).BeginInit();
             SuspendLayout();
             // 
             // AoClicarEmCadastrar
@@ -61,17 +63,29 @@
             AoClicarEmDeletar.Text = "Deletar";
             AoClicarEmDeletar.UseVisualStyleBackColor = true;
             // 
+            // Dt_Lista
+            // 
+            Dt_Lista.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Dt_Lista.Location = new Point(12, 12);
+            Dt_Lista.Name = "Dt_Lista";
+            Dt_Lista.RowTemplate.Height = 25;
+            Dt_Lista.Size = new Size(776, 397);
+            Dt_Lista.TabIndex = 3;
+            
+            // 
             // ListaCelular
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(Dt_Lista);
             Controls.Add(AoClicarEmDeletar);
             Controls.Add(AoClicarEmAtualizar);
             Controls.Add(AoClicarEmCadastrar);
             Name = "ListaCelular";
             Text = "Lista de celulares";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)Dt_Lista).EndInit();
             ResumeLayout(false);
         }
 
@@ -80,5 +94,6 @@
         private Button AoClicarEmCadastrar;
         private Button AoClicarEmAtualizar;
         private Button AoClicarEmDeletar;
+        private DataGridView Dt_Lista;
     }
 }
