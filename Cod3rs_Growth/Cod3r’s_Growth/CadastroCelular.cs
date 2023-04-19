@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
 using Modelo_de_Dados;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Cod3r_s_Growth
 {
@@ -74,15 +64,13 @@ namespace Cod3r_s_Growth
                     _celulares.Add(celular1);
 
                     this.DialogResult = DialogResult.OK;
-
                 }
-
             }
         }
+
         private void AoClicarEmCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
     }
 }
-    

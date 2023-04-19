@@ -53,6 +53,7 @@
             AoClicarEmAtualizar.TabIndex = 1;
             AoClicarEmAtualizar.Text = "Atualizar";
             AoClicarEmAtualizar.UseVisualStyleBackColor = true;
+            AoClicarEmAtualizar.Click += AoClicarEmAtualizar_Click;
             // 
             // AoClicarEmDeletar
             // 

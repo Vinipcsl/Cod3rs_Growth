@@ -12,10 +12,12 @@ namespace Cod3r_s_Growth
             InitializeComponent();
             dataGridView2.DataSource = listaDeCelular;
         }
+
         private void ListarCelular(object sender, EventArgs e)
         {
 
         }
+
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
             CadastroCelular cadastroCelular = new CadastroCelular(listaDeCelular);
@@ -25,6 +27,11 @@ namespace Cod3r_s_Growth
         }
 
         private void AoClicarEmDeletar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AoClicarEmAtualizar_Click(object sender, EventArgs e)
         {
 
         }
