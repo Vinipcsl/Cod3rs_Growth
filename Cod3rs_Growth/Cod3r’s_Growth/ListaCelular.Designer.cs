@@ -31,14 +31,8 @@
             BotaoCadastrar = new Button();
             AoClicarEmAtualizar = new Button();
             AoClicarEmDeletar = new Button();
-            dataGridView1 = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
-            Marca = new DataGridViewTextBoxColumn();
-            Modelo = new DataGridViewTextBoxColumn();
-            Cor = new DataGridViewTextBoxColumn();
-            Memoria = new DataGridViewTextBoxColumn();
-            Data = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dataGridView2 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // BotaoCadastrar
@@ -70,61 +64,29 @@
             AoClicarEmDeletar.UseVisualStyleBackColor = true;
             AoClicarEmDeletar.Click += AoClicarEmDeletar_Click;
             // 
-            // dataGridView1
+            // dataGridView2
             // 
-            dataGridView1.BackgroundColor = SystemColors.MenuHighlight;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, Marca, Modelo, Cor, Memoria, Data });
-            dataGridView1.Location = new Point(12, 12);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(633, 397);
-            dataGridView1.TabIndex = 3;
-            // 
-            // Id
-            // 
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            // 
-            // Marca
-            // 
-            Marca.HeaderText = "Marca";
-            Marca.Name = "Marca";
-            // 
-            // Modelo
-            // 
-            Modelo.HeaderText = "Modelo";
-            Modelo.Name = "Modelo";
-            // 
-            // Cor
-            // 
-            Cor.HeaderText = "Cor";
-            Cor.Name = "Cor";
-            // 
-            // Memoria
-            // 
-            Memoria.HeaderText = "Memoria";
-            Memoria.Name = "Memoria";
-            // 
-            // Data
-            // 
-            Data.HeaderText = "Ano Fabricado";
-            Data.Name = "Data";
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(12, 12);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.Size = new Size(643, 397);
+            dataGridView2.TabIndex = 4;
             // 
             // ListaCelular
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(655, 450);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(669, 450);
+            Controls.Add(dataGridView2);
             Controls.Add(AoClicarEmDeletar);
             Controls.Add(AoClicarEmAtualizar);
             Controls.Add(BotaoCadastrar);
             Name = "ListaCelular";
             Text = "Lista de celulares";
-            Load += ListaCelular_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += ListarCelular;
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }
 
@@ -133,12 +95,6 @@
         private Button BotaoCadastrar;
         private Button AoClicarEmAtualizar;
         private Button AoClicarEmDeletar;
-        public DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Id;
-        private DataGridViewTextBoxColumn Marca;
-        private DataGridViewTextBoxColumn Modelo;
-        private DataGridViewTextBoxColumn Cor;
-        private DataGridViewTextBoxColumn Memoria;
-        private DataGridViewTextBoxColumn Data;
+        private DataGridView dataGridView2;
     }
 }

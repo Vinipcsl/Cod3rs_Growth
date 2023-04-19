@@ -1,39 +1,27 @@
 using Modelo_de_Dados;
-using System.Data;
-using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace Cod3r_s_Growth
 {
-
     public partial class ListaCelular : Form
     {
-
+        private static BindingList<Celular> listaDeCelular = new BindingList<Celular>();
 
         public ListaCelular()
         {
             InitializeComponent();
-
-
-
+            dataGridView2.DataSource = listaDeCelular;
         }
-
-
-        private void ListaCelular_Load(object sender, EventArgs e)
+        private void ListarCelular(object sender, EventArgs e)
         {
 
-
-
-
         }
-        public void recebeLista()
-        {
-            
-        }
-
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
-            CadastroCelular cadastroCelular = new CadastroCelular(this);
+            CadastroCelular cadastroCelular = new CadastroCelular(listaDeCelular);
             cadastroCelular.Show();
+
+            dataGridView2.DataSource = cadastroCelular._celulares;
         }
 
         private void AoClicarEmDeletar_Click(object sender, EventArgs e)
