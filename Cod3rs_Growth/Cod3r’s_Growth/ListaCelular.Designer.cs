@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             BotaoCadastrar = new Button();
-            AoClicarEmAtualizar = new Button();
-            AoClicarEmDeletar = new Button();
+            BotaoAtualizar = new Button();
+            BotaoDeletar = new Button();
             dataGridView2 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -45,28 +45,30 @@
             BotaoCadastrar.UseVisualStyleBackColor = true;
             BotaoCadastrar.Click += AoClicarEmCadastrar;
             // 
-            // AoClicarEmAtualizar
+            // BotaoAtualizar
             // 
-            AoClicarEmAtualizar.Location = new Point(489, 415);
-            AoClicarEmAtualizar.Name = "AoClicarEmAtualizar";
-            AoClicarEmAtualizar.Size = new Size(75, 23);
-            AoClicarEmAtualizar.TabIndex = 1;
-            AoClicarEmAtualizar.Text = "Atualizar";
-            AoClicarEmAtualizar.UseVisualStyleBackColor = true;
-            AoClicarEmAtualizar.Click += AoClicarEmAtualizar_Click;
+            BotaoAtualizar.Location = new Point(489, 415);
+            BotaoAtualizar.Name = "BotaoAtualizar";
+            BotaoAtualizar.Size = new Size(75, 23);
+            BotaoAtualizar.TabIndex = 1;
+            BotaoAtualizar.Text = "Atualizar";
+            BotaoAtualizar.UseVisualStyleBackColor = true;
+            BotaoAtualizar.Click += AoClicarEmAtualizar;
             // 
-            // AoClicarEmDeletar
+            // BotaoDeletar
             // 
-            AoClicarEmDeletar.Location = new Point(570, 415);
-            AoClicarEmDeletar.Name = "AoClicarEmDeletar";
-            AoClicarEmDeletar.Size = new Size(75, 23);
-            AoClicarEmDeletar.TabIndex = 2;
-            AoClicarEmDeletar.Text = "Deletar";
-            AoClicarEmDeletar.UseVisualStyleBackColor = true;
-            AoClicarEmDeletar.Click += AoClicarEmDeletar_Click;
+            BotaoDeletar.Location = new Point(570, 415);
+            BotaoDeletar.Name = "BotaoDeletar";
+            BotaoDeletar.Size = new Size(75, 23);
+            BotaoDeletar.TabIndex = 2;
+            BotaoDeletar.Text = "Deletar";
+            BotaoDeletar.UseVisualStyleBackColor = true;
+            BotaoDeletar.Click += AoClicarEmDeletar;
             // 
             // dataGridView2
             // 
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToDeleteRows = false;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Location = new Point(12, 12);
             dataGridView2.Name = "dataGridView2";
@@ -81,12 +83,11 @@
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(669, 450);
             Controls.Add(dataGridView2);
-            Controls.Add(AoClicarEmDeletar);
-            Controls.Add(AoClicarEmAtualizar);
+            Controls.Add(BotaoDeletar);
+            Controls.Add(BotaoAtualizar);
             Controls.Add(BotaoCadastrar);
             Name = "ListaCelular";
             Text = "Lista de celulares";
-            Load += ListarCelular;
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }
@@ -94,8 +95,8 @@
         #endregion
 
         private Button BotaoCadastrar;
-        private Button AoClicarEmAtualizar;
-        private Button AoClicarEmDeletar;
+        private Button BotaoAtualizar;
+        private Button BotaoDeletar;
         private DataGridView dataGridView2;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -17,5 +18,7 @@ namespace Modelo_de_Dados
         public string Cor { get; set; }
         public int Memoria { get; set; }
         public string AnoFabricacao { get; set; }
+
+       
     }
 }

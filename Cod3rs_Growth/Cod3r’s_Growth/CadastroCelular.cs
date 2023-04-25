@@ -1,76 +1,113 @@
-﻿using System.ComponentModel;
-using Modelo_de_Dados;
+﻿using Modelo_de_Dados;
+using System.ComponentModel;
 
 namespace Cod3r_s_Growth
 {
     public partial class CadastroCelular : Form
     {
-        public  BindingList<Celular> _celulares;
+        public BindingList<Celular> _listaCelulares;
+        public Celular? _celular;
+        public bool Atualizando => _celular != null;
 
-        public CadastroCelular(BindingList<Celular> celulars)
+        public CadastroCelular(BindingList<Celular> celulars, Celular? celular = null)
         {
             InitializeComponent();
-            _celulares = celulars;
-        }
-        
-        private void CadastroCelular_Load(object sender, System.EventArgs e)
-        {
-
+            _listaCelulares = celulars;
+            _celular = celular;
         }
 
-        private void AoClicarEmSalvar_Click(object sender, System.EventArgs e)
+        private void CadastroCelular_Load(object sender, EventArgs e)
         {
-            string mensagem = "";
+            if (_celular != null)
+            {
+                PreencheCampos(_celular);
+            }
+        }
 
-            if (TextoId.Text == "")
+        private void AoClicarEmSalvar(object sender, EventArgs e)
+        {
+            string mensagem = string.Empty;
+
+            if (string.IsNullOrEmpty(TextoMarca.Text))
             {
-                mensagem += "Por favor, preencha o id!";
+                mensagem += "Por favor, preencha a marca!";
             }
-            if (TextoMarca.Text == "")
-            {
-                mensagem += "\nPor favor, preencha a marca!";
-            }
-            if (TextoModelo.Text == "")
+            if (string.IsNullOrEmpty(TextoModelo.Text))
             {
                 mensagem += "\nPor favor, preencha o modelo!";
-                if (TextoCor.Text == "")
-                {
-                    mensagem += "\nPor favor, preencha a cor!";
-
-                }
-                if (TextoMemoria.Text == "")
-                {
-                    mensagem += "\nPor favor, preencha o memoria!";
-                }
-                if (DataFabricado.Text == "")
-                {
-                    mensagem += "\nPor favor, preencha o data!";
-                }
-                if (!mensagem.Equals(""))
-                {
-                    MessageBox.Show(mensagem);
-                }
-                else
-                {
-                    Celular celular1 = new Celular();
-
-                    celular1.Id = Convert.ToInt32(TextoId.Text);
-                    celular1.Marca = TextoMarca.Text;
-                    celular1.Modelo = TextoModelo.Text;
-                    celular1.Cor = TextoCor.Text;
-                    celular1.Memoria = Convert.ToInt32(TextoMemoria.Text);
-                    celular1.AnoFabricacao = Convert.ToString(DataFabricado.Text);
-
-                    _celulares.Add(celular1);
-
-                    this.DialogResult = DialogResult.OK;
-                }
             }
+            if (string.IsNullOrEmpty(TextoCor.Text))
+            {
+                mensagem += "\nPor favor, preencha a cor!";
+            }
+            if (string.IsNullOrEmpty(TextoMemoria.Text))
+            {
+                mensagem += "\nPor favor, preencha a memoria!";
+            }
+            if (string.IsNullOrEmpty(DataFabricado.Text))
+            {
+                mensagem += "\nPor favor, preencha o data!";
+            }
+            if (!mensagem.Equals(""))
+            {
+                MessageBox.Show(mensagem, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var celular = CriaCelular();
+            if (Atualizando)
+            {
+                _listaCelulares.Remove(_celular);
+            }
+
+            _listaCelulares.Add(celular);
+            LimpaCampos();
+            Close();
         }
 
-        private void AoClicarEmCancelar_Click(object sender, EventArgs e)
+        private Celular CriaCelular()
+        {
+            var celular = new Celular();
+
+            celular.Id = _listaCelulares.Count + 1;
+            celular.Marca = TextoMarca.Text;
+            celular.Modelo = TextoModelo.Text;
+            celular.Cor = TextoCor.Text;
+            celular.Memoria = Convert.ToInt32(TextoMemoria.Text);
+            celular.AnoFabricacao = Convert.ToString(DataFabricado.Text);
+            return celular;
+        }
+
+        private void LimpaCampos()
+        {
+            TextoMarca.Text = "";
+            TextoModelo.Text = "";
+            TextoCor.Text = "";
+            TextoMemoria.Text = "";
+            DataFabricado.Text = "";
+        }
+
+        private void PreencheCampos(Celular celular)
+        {
+            TextoMarca.Text = celular.Marca;
+            TextoModelo.Text = celular.Modelo;
+            TextoMemoria.Text = celular.Memoria.ToString();
+            DataFabricado.Text = celular.AnoFabricacao?.ToString();
+        }
+
+        private void AoClicarEmCancelar(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void TextoCor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar)) { e.Handled = true; }
+        }
+
+        private void TextoMemoria_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar)) e.Handled = true;
         }
     }
 }
