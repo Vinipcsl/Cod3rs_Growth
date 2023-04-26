@@ -97,6 +97,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.ForeColor = Color.White;
             label2.Location = new Point(12, 9);
             label2.Name = "label2";
             label2.Size = new Size(40, 15);
@@ -128,7 +129,7 @@
             label5.Name = "label5";
             label5.Size = new Size(55, 15);
             label5.TabIndex = 13;
-            label5.Text = "Memoria";
+            label5.Text = "Memória";
             // 
             // label6
             // 
@@ -151,7 +152,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.MenuHighlight;
+            BackColor = Color.DarkBlue;
             ClientSize = new Size(275, 350);
             Controls.Add(DataFabricado);
             Controls.Add(label6);

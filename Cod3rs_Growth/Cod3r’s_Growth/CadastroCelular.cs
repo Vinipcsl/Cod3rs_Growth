@@ -42,7 +42,7 @@ namespace Cod3r_s_Growth
             }
             if (string.IsNullOrEmpty(TextoMemoria.Text))
             {
-                mensagem += "\nPor favor, preencha a memoria!";
+                mensagem += "\nPor favor, preencha a memória!";
             }
             if (string.IsNullOrEmpty(DataFabricado.Text))
             {
@@ -91,6 +91,7 @@ namespace Cod3r_s_Growth
         {
             TextoMarca.Text = celular.Marca;
             TextoModelo.Text = celular.Modelo;
+            TextoCor.Text = celular.Cor;
             TextoMemoria.Text = celular.Memoria.ToString();
             DataFabricado.Text = celular.AnoFabricacao?.ToString();
         }

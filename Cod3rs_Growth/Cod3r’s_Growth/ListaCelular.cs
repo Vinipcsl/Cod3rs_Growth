@@ -28,9 +28,14 @@ namespace Cod3r_s_Growth
             var idCelular = (int)dataGridView2.CurrentRow.Cells[0].Value;
             var celular = listaDeCelular.FirstOrDefault(celular => celular.Id == idCelular);
 
-            if (celular != null)
+            DialogResult dialogResult = MessageBox.Show("Deseja mesmo apagar? \nNão será possível recuperar as informações!", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
             {
-                listaDeCelular.Remove(celular);
+                if (celular != null)
+                {
+
+                    listaDeCelular.Remove(celular);
+                }
             }
         }
 
@@ -51,7 +56,7 @@ namespace Cod3r_s_Growth
 
         private static void ExibirTelaCadastro(Celular? celular = null)
         {
-            CadastroCelular cadastroCelular = new (listaDeCelular, celular);
+            CadastroCelular cadastroCelular = new(listaDeCelular, celular);
             cadastroCelular.Show();
         }
     }
