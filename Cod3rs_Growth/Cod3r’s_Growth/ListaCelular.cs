@@ -13,7 +13,7 @@ namespace Cod3r_s_Growth
             dataGridView2.DataSource = listaDeCelular;
         }
 
-        private void AoClicarEmCadastrar(object sender, EventArgs e)
+        private void AoClicarEmCadastrar(object sender, EventArgs e) 
         {
             ExibirTelaCadastro();
         }
@@ -59,5 +59,6 @@ namespace Cod3r_s_Growth
             CadastroCelular cadastroCelular = new(listaDeCelular, celular);
             cadastroCelular.Show();
         }
+       
     }
 }

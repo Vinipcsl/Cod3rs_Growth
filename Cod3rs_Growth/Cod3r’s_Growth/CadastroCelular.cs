@@ -55,21 +55,37 @@ namespace Cod3r_s_Growth
             }
 
             var celular = CriaCelular();
+
             if (Atualizando)
             {
-                _listaCelulares.Remove(_celular);
-            }
+                // Executar a operação de atualizar
+               
 
-            _listaCelulares.Add(celular);
-            LimpaCampos();
-            Close();
+            }
+            else
+            {
+                _listaCelulares.Add(celular);
+                LimpaCampos();
+                Close();
+            }
         }
 
         private Celular CriaCelular()
         {
             var celular = new Celular();
 
-            celular.Id = _listaCelulares.Count + 1;
+            if (Atualizando)
+            {
+                celular.Id = _celular.Id; 
+
+            }
+            else
+            {
+               var ultimoid = _listaCelulares.Any() ? (_listaCelulares.Max(x => x.Id) ): 1;
+                celular.Id = ultimoid + 1;
+                
+            }
+           
             celular.Marca = TextoMarca.Text;
             celular.Modelo = TextoModelo.Text;
             celular.Cor = TextoCor.Text;
@@ -77,7 +93,7 @@ namespace Cod3r_s_Growth
             celular.AnoFabricacao = Convert.ToString(DataFabricado.Text);
             return celular;
         }
-
+       
         private void LimpaCampos()
         {
             TextoMarca.Text = "";
