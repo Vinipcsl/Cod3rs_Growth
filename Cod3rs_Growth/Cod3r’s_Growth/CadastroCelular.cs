@@ -59,7 +59,9 @@ namespace Cod3r_s_Growth
             if (Atualizando)
             {
                 // Executar a operação de atualizar
-               
+                var atalizarCelular = AtualizarCelular();
+                _listaCelulares.Add(atalizarCelular);
+                Close();
 
             }
             else
@@ -93,7 +95,18 @@ namespace Cod3r_s_Growth
             celular.AnoFabricacao = Convert.ToString(DataFabricado.Text);
             return celular;
         }
-       
+        private Celular AtualizarCelular()
+        {
+            var atualizarCelular = new Celular();
+
+            atualizarCelular.Marca = TextoMarca.Text;
+            atualizarCelular.Modelo = TextoModelo.Text;
+            atualizarCelular.Cor = TextoCor.Text;
+            atualizarCelular.Memoria = Convert.ToInt32(TextoMemoria.Text);
+            atualizarCelular.AnoFabricacao = Convert.ToString(DataFabricado.Text);
+            return atualizarCelular;
+        }
+
         private void LimpaCampos()
         {
             TextoMarca.Text = "";
