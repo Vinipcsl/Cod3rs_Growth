@@ -6,6 +6,7 @@ namespace Cod3r_s_Growth
     public partial class ListaCelular : Form
     {
         private static BindingList<Celular> listaDeCelular = new BindingList<Celular>();
+        private static int id = 0;
 
         public ListaCelular()
         {
@@ -13,16 +14,21 @@ namespace Cod3r_s_Growth
             dataGridView2.DataSource = listaDeCelular;
         }
 
-        private void AoClicarEmCadastrar(object sender, EventArgs e) 
+        private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
             ExibirTelaCadastro();
         }
 
         private void AoClicarEmDeletar(object sender, EventArgs e)
         {
-            if (dataGridView2.SelectedRows.Count == 0 || dataGridView2.SelectedRows.Count > 1)
+            if (dataGridView2.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Operação inválida! \nSelecione uma linha!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Operação inválida! \nNenhuma linha selecionada!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (dataGridView2.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Operação inválida! \nSelecione apenas uma linha!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             var idCelular = (int)dataGridView2.CurrentRow.Cells[0].Value;
@@ -33,7 +39,6 @@ namespace Cod3r_s_Growth
             {
                 if (celular != null)
                 {
-
                     listaDeCelular.Remove(celular);
                 }
             }
@@ -51,7 +56,6 @@ namespace Cod3r_s_Growth
             var celular = listaDeCelular.FirstOrDefault(celular => celular.Id == idCelular);
 
             ExibirTelaCadastro(celular);
-
         }
 
         private static void ExibirTelaCadastro(Celular? celular = null)
@@ -59,6 +63,11 @@ namespace Cod3r_s_Growth
             CadastroCelular cadastroCelular = new(listaDeCelular, celular);
             cadastroCelular.Show();
         }
-       
+
+        public int IdIncremento()
+        {
+            id++;
+            return id;
+        }
     }
 }

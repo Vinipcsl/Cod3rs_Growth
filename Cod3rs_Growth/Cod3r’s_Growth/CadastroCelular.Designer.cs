@@ -84,7 +84,7 @@
             TextoMemoria.Name = "TextoMemoria";
             TextoMemoria.Size = new Size(243, 23);
             TextoMemoria.TabIndex = 7;
-            TextoMemoria.KeyPress += TextoMemoria_KeyPress;
+            TextoMemoria.KeyPress += ValidarCampoMemoria;
             // 
             // TextoCor
             // 
@@ -92,7 +92,7 @@
             TextoCor.Name = "TextoCor";
             TextoCor.Size = new Size(245, 23);
             TextoCor.TabIndex = 6;
-            TextoCor.KeyPress += TextoCor_KeyPress;
+            TextoCor.KeyPress += ValidarCampoCor;
             // 
             // label2
             // 
@@ -168,8 +168,7 @@
             Controls.Add(BotaoSalvar);
             ForeColor = SystemColors.ControlLightLight;
             Name = "CadastroCelular";
-            Text = "CadastroCelular";
-            Load += CadastroCelular_Load;
+            Text = "CadastroCelular";           
             ResumeLayout(false);
             PerformLayout();
         }

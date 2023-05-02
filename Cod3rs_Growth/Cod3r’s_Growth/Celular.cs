@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Cod3r_s_Growth;
-
+﻿
 namespace Modelo_de_Dados
 {
     public class Celular
@@ -18,7 +9,5 @@ namespace Modelo_de_Dados
         public string Cor { get; set; }
         public int Memoria { get; set; }
         public string AnoFabricacao { get; set; }
-
-       
     }
 }
