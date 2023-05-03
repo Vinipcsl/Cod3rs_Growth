@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            AoClicarEmSalvar = new Button();
-            AoClicarEmLimpar = new Button();
-            AoClicarEmCancelar = new Button();
+            BotaoSalvar = new Button();
+            BotaoCancelar = new Button();
             TextoMarca = new TextBox();
             TextoModelo = new TextBox();
             TextoMemoria = new TextBox();
@@ -40,73 +39,66 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            TextoId = new TextBox();
-            label1 = new Label();
-            DataFabricacao = new MonthCalendar();
+            DataFabricado = new DateTimePicker();
             SuspendLayout();
             // 
-            // AoClicarEmSalvar
+            // BotaoSalvar
             // 
-            AoClicarEmSalvar.Location = new Point(142, 329);
-            AoClicarEmSalvar.Name = "AoClicarEmSalvar";
-            AoClicarEmSalvar.Size = new Size(75, 23);
-            AoClicarEmSalvar.TabIndex = 0;
-            AoClicarEmSalvar.Text = "Salvar";
-            AoClicarEmSalvar.UseVisualStyleBackColor = true;
-            AoClicarEmSalvar.Click += AoClicarEmSalvar_Click;
+            BotaoSalvar.ForeColor = SystemColors.ActiveCaptionText;
+            BotaoSalvar.Location = new Point(12, 311);
+            BotaoSalvar.Name = "BotaoSalvar";
+            BotaoSalvar.Size = new Size(75, 23);
+            BotaoSalvar.TabIndex = 0;
+            BotaoSalvar.Text = "Salvar";
+            BotaoSalvar.UseVisualStyleBackColor = true;
+            BotaoSalvar.Click += AoClicarEmSalvar;
             // 
-            // AoClicarEmLimpar
+            // BotaoCancelar
             // 
-            AoClicarEmLimpar.Location = new Point(223, 329);
-            AoClicarEmLimpar.Name = "AoClicarEmLimpar";
-            AoClicarEmLimpar.Size = new Size(75, 23);
-            AoClicarEmLimpar.TabIndex = 1;
-            AoClicarEmLimpar.Text = "Limpar";
-            AoClicarEmLimpar.UseVisualStyleBackColor = true;
-            AoClicarEmLimpar.Click += AoClicarEmLimpar_Click;
-            // 
-            // AoClicarEmCancelar
-            // 
-            AoClicarEmCancelar.Location = new Point(304, 329);
-            AoClicarEmCancelar.Name = "AoClicarEmCancelar";
-            AoClicarEmCancelar.Size = new Size(75, 23);
-            AoClicarEmCancelar.TabIndex = 2;
-            AoClicarEmCancelar.Text = "Cancelar";
-            AoClicarEmCancelar.UseVisualStyleBackColor = true;
-            AoClicarEmCancelar.Click += AoClicarEmCancelar_Click;
+            BotaoCancelar.ForeColor = SystemColors.ActiveCaptionText;
+            BotaoCancelar.Location = new Point(182, 311);
+            BotaoCancelar.Name = "BotaoCancelar";
+            BotaoCancelar.Size = new Size(75, 23);
+            BotaoCancelar.TabIndex = 2;
+            BotaoCancelar.Text = "Cancelar";
+            BotaoCancelar.UseVisualStyleBackColor = true;
+            BotaoCancelar.Click += AoClicarEmCancelar;
             // 
             // TextoMarca
             // 
-            TextoMarca.Location = new Point(12, 65);
+            TextoMarca.Location = new Point(14, 27);
             TextoMarca.Name = "TextoMarca";
-            TextoMarca.Size = new Size(100, 23);
+            TextoMarca.Size = new Size(243, 23);
             TextoMarca.TabIndex = 4;
             // 
             // TextoModelo
             // 
-            TextoModelo.Location = new Point(12, 109);
+            TextoModelo.Location = new Point(12, 86);
             TextoModelo.Name = "TextoModelo";
-            TextoModelo.Size = new Size(100, 23);
+            TextoModelo.Size = new Size(243, 23);
             TextoModelo.TabIndex = 5;
             // 
             // TextoMemoria
             // 
-            TextoMemoria.Location = new Point(12, 197);
+            TextoMemoria.Location = new Point(12, 192);
             TextoMemoria.Name = "TextoMemoria";
-            TextoMemoria.Size = new Size(100, 23);
+            TextoMemoria.Size = new Size(243, 23);
             TextoMemoria.TabIndex = 7;
+            TextoMemoria.KeyPress += ValidarCampoMemoria;
             // 
             // TextoCor
             // 
-            TextoCor.Location = new Point(12, 153);
+            TextoCor.Location = new Point(12, 140);
             TextoCor.Name = "TextoCor";
-            TextoCor.Size = new Size(100, 23);
+            TextoCor.Size = new Size(245, 23);
             TextoCor.TabIndex = 6;
+            TextoCor.KeyPress += ValidarCampoCor;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 47);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(12, 9);
             label2.Name = "label2";
             label2.Size = new Size(40, 15);
             label2.TabIndex = 10;
@@ -115,7 +107,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 91);
+            label3.Location = new Point(14, 68);
             label3.Name = "label3";
             label3.Size = new Size(48, 15);
             label3.TabIndex = 11;
@@ -124,7 +116,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 135);
+            label4.Location = new Point(12, 122);
             label4.Name = "label4";
             label4.Size = new Size(26, 15);
             label4.TabIndex = 12;
@@ -133,51 +125,36 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(12, 179);
+            label5.Location = new Point(14, 174);
             label5.Name = "label5";
             label5.Size = new Size(55, 15);
             label5.TabIndex = 13;
-            label5.Text = "Memoria";
+            label5.Text = "Memória";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(332, 3);
+            label6.Location = new Point(12, 227);
             label6.Name = "label6";
             label6.Size = new Size(84, 15);
             label6.TabIndex = 14;
             label6.Text = "Ano Fabricado";
             // 
-            // TextoId
+            // DataFabricado
             // 
-            TextoId.Location = new Point(12, 21);
-            TextoId.Name = "TextoId";
-            TextoId.Size = new Size(100, 23);
-            TextoId.TabIndex = 15;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(14, 3);
-            label1.Name = "label1";
-            label1.Size = new Size(18, 15);
-            label1.TabIndex = 16;
-            label1.Text = "ID";
-            // 
-            // DataFabricacao
-            // 
-            DataFabricacao.Location = new Point(268, 21);
-            DataFabricacao.Name = "DataFabricacao";
-            DataFabricacao.TabIndex = 17;
+            DataFabricado.Format = DateTimePickerFormat.Short;
+            DataFabricado.Location = new Point(14, 245);
+            DataFabricado.Name = "DataFabricado";
+            DataFabricado.Size = new Size(245, 23);
+            DataFabricado.TabIndex = 18;
             // 
             // CadastroCelular
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(513, 364);
-            Controls.Add(DataFabricacao);
-            Controls.Add(label1);
-            Controls.Add(TextoId);
+            BackColor = Color.DarkBlue;
+            ClientSize = new Size(275, 350);
+            Controls.Add(DataFabricado);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -187,21 +164,19 @@
             Controls.Add(TextoCor);
             Controls.Add(TextoModelo);
             Controls.Add(TextoMarca);
-            Controls.Add(AoClicarEmCancelar);
-            Controls.Add(AoClicarEmLimpar);
-            Controls.Add(AoClicarEmSalvar);
+            Controls.Add(BotaoCancelar);
+            Controls.Add(BotaoSalvar);
+            ForeColor = SystemColors.ControlLightLight;
             Name = "CadastroCelular";
-            Text = "CadastroCelular";
-            Load += CadastroCelular_Load;
+            Text = "CadastroCelular";           
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button AoClicarEmSalvar;
-        private Button AoClicarEmLimpar;
-        private Button AoClicarEmCancelar;
+        private Button BotaoSalvar;
+        private Button BotaoCancelar;
         private TextBox TextoMarca;
         private TextBox TextoModelo;
         private TextBox TextoMemoria;
@@ -211,8 +186,6 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private TextBox TextoId;
-        private Label label1;
-        private MonthCalendar DataFabricacao;
+        private DateTimePicker DataFabricado;
     }
 }

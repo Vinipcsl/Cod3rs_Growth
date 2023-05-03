@@ -28,72 +28,76 @@
         /// </summary>
         private void InitializeComponent()
         {
-            AoClicarEmCadastrar = new Button();
-            AoClicarEmAtualizar = new Button();
-            AoClicarEmDeletar = new Button();
-            Dt_Lista = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)Dt_Lista).BeginInit();
+            BotaoCadastrar = new Button();
+            BotaoAtualizar = new Button();
+            BotaoDeletar = new Button();
+            dataGridView2 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
-            // AoClicarEmCadastrar
+            // BotaoCadastrar
             // 
-            AoClicarEmCadastrar.Location = new Point(551, 415);
-            AoClicarEmCadastrar.Name = "AoClicarEmCadastrar";
-            AoClicarEmCadastrar.Size = new Size(75, 23);
-            AoClicarEmCadastrar.TabIndex = 0;
-            AoClicarEmCadastrar.Text = "Cadastrar";
-            AoClicarEmCadastrar.UseVisualStyleBackColor = true;
-            AoClicarEmCadastrar.Click += button1_Click;
+            BotaoCadastrar.Location = new Point(408, 415);
+            BotaoCadastrar.Name = "BotaoCadastrar";
+            BotaoCadastrar.Size = new Size(75, 23);
+            BotaoCadastrar.TabIndex = 0;
+            BotaoCadastrar.Text = "Cadastrar";
+            BotaoCadastrar.UseVisualStyleBackColor = true;
+            BotaoCadastrar.Click += AoClicarEmCadastrar;
             // 
-            // AoClicarEmAtualizar
+            // BotaoAtualizar
             // 
-            AoClicarEmAtualizar.Location = new Point(632, 415);
-            AoClicarEmAtualizar.Name = "AoClicarEmAtualizar";
-            AoClicarEmAtualizar.Size = new Size(75, 23);
-            AoClicarEmAtualizar.TabIndex = 1;
-            AoClicarEmAtualizar.Text = "Atualizar";
-            AoClicarEmAtualizar.UseVisualStyleBackColor = true;
+            BotaoAtualizar.Location = new Point(489, 415);
+            BotaoAtualizar.Name = "BotaoAtualizar";
+            BotaoAtualizar.Size = new Size(75, 23);
+            BotaoAtualizar.TabIndex = 1;
+            BotaoAtualizar.Text = "Atualizar";
+            BotaoAtualizar.UseVisualStyleBackColor = true;
+            BotaoAtualizar.Click += AoClicarEmAtualizar;
             // 
-            // AoClicarEmDeletar
+            // BotaoDeletar
             // 
-            AoClicarEmDeletar.Location = new Point(713, 415);
-            AoClicarEmDeletar.Name = "AoClicarEmDeletar";
-            AoClicarEmDeletar.Size = new Size(75, 23);
-            AoClicarEmDeletar.TabIndex = 2;
-            AoClicarEmDeletar.Text = "Deletar";
-            AoClicarEmDeletar.UseVisualStyleBackColor = true;
+            BotaoDeletar.Location = new Point(570, 415);
+            BotaoDeletar.Name = "BotaoDeletar";
+            BotaoDeletar.Size = new Size(75, 23);
+            BotaoDeletar.TabIndex = 2;
+            BotaoDeletar.Text = "Deletar";
+            BotaoDeletar.UseVisualStyleBackColor = true;
+            BotaoDeletar.Click += AoClicarEmDeletar;
             // 
-            // Dt_Lista
+            // dataGridView2
             // 
-            Dt_Lista.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            Dt_Lista.Location = new Point(12, 12);
-            Dt_Lista.Name = "Dt_Lista";
-            Dt_Lista.RowTemplate.Height = 25;
-            Dt_Lista.Size = new Size(776, 397);
-            Dt_Lista.TabIndex = 3;
-            
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView2.BackgroundColor = Color.BlueViolet;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(12, 12);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.Size = new Size(643, 397);
+            dataGridView2.TabIndex = 4;
             // 
             // ListaCelular
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(Dt_Lista);
-            Controls.Add(AoClicarEmDeletar);
-            Controls.Add(AoClicarEmAtualizar);
-            Controls.Add(AoClicarEmCadastrar);
+            BackColor = SystemColors.ActiveCaptionText;
+            ClientSize = new Size(669, 450);
+            Controls.Add(dataGridView2);
+            Controls.Add(BotaoDeletar);
+            Controls.Add(BotaoAtualizar);
+            Controls.Add(BotaoCadastrar);
             Name = "ListaCelular";
             Text = "Lista de celulares";
-            Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)Dt_Lista).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button AoClicarEmCadastrar;
-        private Button AoClicarEmAtualizar;
-        private Button AoClicarEmDeletar;
-        private DataGridView Dt_Lista;
+        private Button BotaoCadastrar;
+        private Button BotaoAtualizar;
+        private Button BotaoDeletar;
+        private DataGridView dataGridView2;
     }
 }
