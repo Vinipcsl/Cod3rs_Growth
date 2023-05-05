@@ -6,23 +6,17 @@ namespace Cod3r_s_Growth
 {
     public sealed class Singleton
     {
-        private static Singleton? _instancia;
-        public BindingList<Celular> celulars;
+
+        private static BindingList<Celular> celulars;
         private static int id = 0;
 
-        public static Singleton Instancia()
+        public static BindingList<Celular> Instancia()
         {
-            lock (typeof(Singleton))
-
-            if (_instancia == null)
+            if (celulars == null)
             {
-                _instancia = new Singleton()
-                {
-                    celulars = new BindingList<Celular>()
-                };
-            };
-
-            return _instancia;
+                celulars = new BindingList<Celular>();
+            }
+            return celulars;
         }
 
         public int IdIncremento()
