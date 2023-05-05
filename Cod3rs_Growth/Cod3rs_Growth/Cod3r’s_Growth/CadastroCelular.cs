@@ -9,6 +9,7 @@ namespace Cod3r_s_Growth
         public Celular? _celular;
         public bool Atualizando => _celular != null;
         private static List<string> listaDeErros = new();
+        private static Singleton singleton;
 
         public CadastroCelular(BindingList<Celular> celulars, Celular celular)
         {
@@ -57,7 +58,7 @@ namespace Cod3r_s_Growth
             }
             var celular = new Celular();
 
-            celular.Id = Singleton.Instancia().IdIncremento();
+            celular.Id = singleton.IdIncremento();
             celular.Marca = TextoMarca.Text;
             celular.Modelo = TextoModelo.Text;
             celular.Cor = TextoCor.Text;
