@@ -19,7 +19,7 @@ namespace Cod3r_s_Growth
             return celulars;
         }
 
-        public int IdIncremento()
+        public static int IdIncremento()
         {
             id++;
             return id;

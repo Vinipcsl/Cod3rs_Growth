@@ -1,13 +1,16 @@
 using Cod3r_s_Growth.Repositorio;
 using Modelo_de_Dados;
 using System.ComponentModel;
+using System.Security.Permissions;
 
-namespace Cod3r_s_Growth
+namespace Cod3r_s_Growth 
 {
     public partial class ListaCelular : Form
     {
+       
         public static BindingList<Celular> listaDeCelular = Singleton.Instancia();
-        public static Repositorio repositorio = IRepositorio();
+        public IRepositorio repositorio = new Repositorio.Repositorio();
+        //public static Repositorio.Repositorio repositorio = repositorio1;
 
         public ListaCelular()
         {
@@ -33,7 +36,8 @@ namespace Cod3r_s_Growth
                 {
                     if (celular != null)
                     {
-                        listaDeCelular.Remove(celular);
+                        repositorio.deletar(idCelular);
+                      
                         MessageBox.Show("Celular removido com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

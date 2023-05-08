@@ -1,10 +1,12 @@
-﻿using Modelo_de_Dados;
+﻿using Cod3r_s_Growth.Repositorio;
+using Modelo_de_Dados;
 using System.ComponentModel;
 
 namespace Cod3r_s_Growth
 {
     public partial class CadastroCelular : Form
     {
+        public IRepositorio repositorio = new Repositorio.Repositorio();
         public BindingList<Celular> _listaCelulares;
         public Celular? _celular;
         public bool Atualizando => _celular != null;
@@ -37,9 +39,7 @@ namespace Cod3r_s_Growth
                 }
                 else
                 {
-                    var celular = CriaCelular();
-
-                    _listaCelulares.Add(celular);
+                    repositorio.adicionar(novoCelular);
                     MessageBox.Show("Celular cadastrado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
@@ -58,7 +58,7 @@ namespace Cod3r_s_Growth
             }
             var celular = new Celular();
 
-            celular.Id = singleton.IdIncremento();
+            celular.Id = Singleton.IdIncremento();
             celular.Marca = TextoMarca.Text;
             celular.Modelo = TextoModelo.Text;
             celular.Cor = TextoCor.Text;
