@@ -1,26 +1,26 @@
 using Cod3r_s_Growth.Repositorio;
 using Modelo_de_Dados;
 using System.ComponentModel;
-using System.Security.Permissions;
 
-namespace Cod3r_s_Growth 
+
+namespace Cod3r_s_Growth
 {
     public partial class ListaCelular : Form
     {
-       
         public static BindingList<Celular> listaDeCelular = Singleton.Instancia();
         public IRepositorio repositorio = new Repositorio.Repositorio();
-        //public static Repositorio.Repositorio repositorio = repositorio1;
 
         public ListaCelular()
         {
             InitializeComponent();
-            dataGridView2.DataSource = listaDeCelular;
+            CarregarTela();
         }
 
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
-            ExibirTelaCadastro();
+            CadastroCelular cadastroCelular = new(listaDeCelular, null);
+            cadastroCelular.ShowDialog();
+            CarregarTela();
         }
 
         private void AoClicarEmDeletar(object sender, EventArgs e)
@@ -36,8 +36,7 @@ namespace Cod3r_s_Growth
                 {
                     if (celular != null)
                     {
-                        repositorio.deletar(idCelular);
-                      
+                        repositorio.Deletar(idCelular);
                         MessageBox.Show("Celular removido com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -56,8 +55,9 @@ namespace Cod3r_s_Growth
 
                 var idCelular = (int)dataGridView2.CurrentRow.Cells[0].Value;
                 var celular = listaDeCelular.FirstOrDefault(celular => celular.Id == idCelular);
-
-                ExibirTelaCadastro(celular);
+                CadastroCelular cadastroCelular = new(listaDeCelular, celular);
+                cadastroCelular.ShowDialog();
+                CarregarTela();
             }
             catch (Exception ex)
             {
@@ -73,7 +73,6 @@ namespace Cod3r_s_Growth
                 mensagemDeErro = "Operação inválida! \nNenhuma linha selecionada!";
                 throw new Exception(mensagemDeErro);
             }
-
             if (dataGridView2.SelectedRows.Count > 1)
             {
                 mensagemDeErro = "Operação inválida! \nSelecione apenas uma linha!";
@@ -81,10 +80,10 @@ namespace Cod3r_s_Growth
             }
         }
 
-        private static void ExibirTelaCadastro(Celular? celular = null)
+        public void CarregarTela()
         {
-            CadastroCelular cadastroCelular = new(listaDeCelular, celular);
-            cadastroCelular.Show();
+            dataGridView2.DataSource = null;
+            dataGridView2.DataSource = repositorio.ObterTodos();
         }
     }
 }

@@ -6,10 +6,9 @@ namespace Cod3r_s_Growth
 {
     public partial class CadastroCelular : Form
     {
-        public IRepositorio repositorio = new Repositorio.Repositorio();
+        private readonly IRepositorio repositorio;
         public BindingList<Celular> _listaCelulares;
         public Celular? _celular;
-        public bool Atualizando => _celular != null;
         private static List<string> listaDeErros = new();
         private static Singleton singleton;
 
@@ -19,6 +18,7 @@ namespace Cod3r_s_Growth
             PreencherCampos(celular);
             _listaCelulares = celulars;
             _celular = celular;
+            repositorio = new Repositorio.Repositorio();
         }
 
         private void AoClicarEmSalvar(object sender, EventArgs e)
@@ -26,22 +26,21 @@ namespace Cod3r_s_Growth
             try
             {
                 ValidarCampos();
-
-                if (Atualizando)
+                if (_celular != null)
                 {
-                    var atalizarCelular = AtualizarCelular();
-                    var indexDoCelular = _listaCelulares.IndexOf(atalizarCelular);
-
-                    _listaCelulares[indexDoCelular] = atalizarCelular;
-
-                    MessageBox.Show("Celular atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AtualizarCelular();
+                    repositorio.Atualizar(_celular.Id, _celular);
                     Close();
+                    MessageBox.Show("Celular atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 else
                 {
-                    repositorio.adicionar(novoCelular);
-                    MessageBox.Show("Celular cadastrado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var celular = CriaCelular();
+                    repositorio.Adicionar(celular);
                     Close();
+                    MessageBox.Show("Celular cadastrado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
             }
             catch (Exception ex)
@@ -52,18 +51,15 @@ namespace Cod3r_s_Growth
 
         private Celular CriaCelular()
         {
-            if (Atualizando)
+            Celular celular = new()
             {
-                return AtualizarCelular();
-            }
-            var celular = new Celular();
-
-            celular.Id = Singleton.IdIncremento();
-            celular.Marca = TextoMarca.Text;
-            celular.Modelo = TextoModelo.Text;
-            celular.Cor = TextoCor.Text;
-            celular.Memoria = Convert.ToInt32(TextoMemoria.Text);
-            celular.AnoFabricacao = Convert.ToString(DataFabricado.Text);
+                Id = Singleton.IdIncremento(),
+                Marca = TextoMarca.Text,
+                Modelo = TextoModelo.Text,
+                Cor = TextoCor.Text,
+                Memoria = Convert.ToInt32(TextoMemoria.Text),
+                AnoFabricacao = Convert.ToString(DataFabricado.Text)
+            };
             return celular;
         }
 
@@ -117,7 +113,6 @@ namespace Cod3r_s_Growth
             {
                 var _listaDeErros = string.Join("\n", listaDeErros);
                 throw new Exception(_listaDeErros);
-
             }
         }
 

@@ -69,7 +69,6 @@
             // 
             dataGridView2.AllowUserToAddRows = false;
             dataGridView2.AllowUserToDeleteRows = false;
-            dataGridView2.BackgroundColor = Color.BlueViolet;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Location = new Point(12, 12);
             dataGridView2.Name = "dataGridView2";

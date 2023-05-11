@@ -6,28 +6,29 @@ namespace Cod3r_s_Growth.Repositorio
     internal class Repositorio : IRepositorio
     {
         protected BindingList<Celular> _listaCelular = Singleton.Instancia();
+
         public BindingList<Celular> obterTodos()
         {
             return _listaCelular;
         }
 
-        public void adicionar(Celular novoCelular)
+        public void Adicionar(Celular novoCelular)
         {
             _listaCelular.Add(novoCelular);
         }
 
-        public void atualizar(int id, Celular novoCelular)
+        public void Atualizar(int id, Celular celularAtual)
         {
-            var index = _listaCelular.Where(c => c.Id.Equals(id)).FirstOrDefault();
-
-            index.Marca = novoCelular.Marca;
-            index.Modelo = novoCelular.Modelo;
-            index.Cor = novoCelular.Cor;
-            index.Memoria = novoCelular.Memoria;
-            index.AnoFabricacao = novoCelular.AnoFabricacao;        
+            var celularNovo = _listaCelular.Where(c => c.Id.Equals(id)).FirstOrDefault();
+            
+            celularNovo.Marca = celularAtual.Marca;
+            celularNovo.Modelo = celularAtual.Modelo;
+            celularNovo.Cor = celularAtual.Cor;
+            celularNovo.Memoria = celularAtual.Memoria;
+            celularNovo.AnoFabricacao = celularAtual.AnoFabricacao;           
         }
 
-        public void deletar(int id)
+        public void Deletar(int id)
         {
             var celularDeletar = ObterPorId(id);
             _listaCelular.Remove(celularDeletar);
@@ -40,7 +41,7 @@ namespace Cod3r_s_Growth.Repositorio
 
         public BindingList<Celular> ObterTodos()
         {
-            throw new NotImplementedException();
+            return _listaCelular;
         }
     }
 }

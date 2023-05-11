@@ -81,6 +81,7 @@
             // TextoMemoria
             // 
             TextoMemoria.Location = new Point(12, 192);
+            TextoMemoria.MaxLength = 5;
             TextoMemoria.Name = "TextoMemoria";
             TextoMemoria.Size = new Size(243, 23);
             TextoMemoria.TabIndex = 7;
@@ -168,7 +169,7 @@
             Controls.Add(BotaoSalvar);
             ForeColor = SystemColors.ControlLightLight;
             Name = "CadastroCelular";
-            Text = "CadastroCelular";          
+            Text = "CadastroCelular";
             ResumeLayout(false);
             PerformLayout();
         }
