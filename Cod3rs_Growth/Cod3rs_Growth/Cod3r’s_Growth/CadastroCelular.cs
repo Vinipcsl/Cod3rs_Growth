@@ -36,7 +36,7 @@ namespace Cod3r_s_Growth
                 }
                 else
                 {
-                    var celular = CriaCelular();
+                    var celular = ConverterCelular();
                     repositorio.Adicionar(celular);
                     Close();
                     MessageBox.Show("Celular cadastrado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -49,7 +49,7 @@ namespace Cod3r_s_Growth
             }
         }
 
-        private Celular CriaCelular()
+        private Celular ConverterCelular()
         {
             Celular celular = new()
             {
@@ -58,19 +58,18 @@ namespace Cod3r_s_Growth
                 Modelo = TextoModelo.Text,
                 Cor = TextoCor.Text,
                 Memoria = Convert.ToInt32(TextoMemoria.Text),
-                AnoFabricacao = Convert.ToString(DataFabricado.Text)
+                AnoFabricacao = Convert.ToDateTime(DataFabricado.Text)
             };
             return celular;
         }
 
-        private Celular AtualizarCelular()
+        private void AtualizarCelular()
         {
             _celular.Marca = TextoMarca.Text;
             _celular.Modelo = TextoModelo.Text;
             _celular.Cor = TextoCor.Text;
             _celular.Memoria = Convert.ToInt32(TextoMemoria.Text);
-            _celular.AnoFabricacao = Convert.ToString(DataFabricado.Text);
-            return _celular;
+            _celular.AnoFabricacao = Convert.ToDateTime(DataFabricado.Text);            
         }
 
         private void PreencherCampos(Celular celular)
@@ -81,7 +80,7 @@ namespace Cod3r_s_Growth
                 TextoModelo.Text = celular.Modelo;
                 TextoCor.Text = celular.Cor;
                 TextoMemoria.Text = celular.Memoria.ToString();
-                DataFabricado.Text = celular.AnoFabricacao?.ToString();
+                DataFabricado.Text = celular.AnoFabricacao.ToString();
             }
         }
 

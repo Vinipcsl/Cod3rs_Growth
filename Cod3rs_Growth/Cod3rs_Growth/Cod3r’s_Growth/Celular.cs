@@ -8,6 +8,6 @@ namespace Modelo_de_Dados
         public string Modelo { get; set; }
         public string Cor { get; set; }
         public int Memoria { get; set; }
-        public string AnoFabricacao { get; set; }
+        public DateTime AnoFabricacao { get; set; }
     }
 }
