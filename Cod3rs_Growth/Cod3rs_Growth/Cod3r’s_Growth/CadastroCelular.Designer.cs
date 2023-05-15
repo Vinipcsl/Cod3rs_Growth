@@ -85,6 +85,7 @@
             TextoMemoria.Name = "TextoMemoria";
             TextoMemoria.Size = new Size(243, 23);
             TextoMemoria.TabIndex = 7;
+            TextoMemoria.Text = "\r\n";
             TextoMemoria.KeyPress += ValidarCampoMemoria;
             // 
             // TextoCor

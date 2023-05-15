@@ -18,7 +18,8 @@ namespace Cod3r_s_Growth
 
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
-            CadastroCelular cadastroCelular = new(listaDeCelular, null);
+            int GuardarId = 0;
+            CadastroCelular cadastroCelular = new(listaDeCelular, GuardarId);
             cadastroCelular.ShowDialog();
             CarregarTela();
         }
@@ -55,7 +56,7 @@ namespace Cod3r_s_Growth
 
                 var idCelular = (int)dataGridView2.CurrentRow.Cells[0].Value;
                 var celular = listaDeCelular.FirstOrDefault(celular => celular.Id == idCelular);
-                CadastroCelular cadastroCelular = new(listaDeCelular, celular);
+                CadastroCelular cadastroCelular = new(listaDeCelular, celular.Id);
                 cadastroCelular.ShowDialog();
                 CarregarTela();
             }
@@ -67,7 +68,7 @@ namespace Cod3r_s_Growth
 
         private void ValidarQuantidadeDeLinhasSelecionadas()
         {
-            var mensagemDeErro = string.Empty;
+            string mensagemDeErro;
             if (dataGridView2.SelectedRows.Count == 0)
             {
                 mensagemDeErro = "Operação inválida! \nNenhuma linha selecionada!";

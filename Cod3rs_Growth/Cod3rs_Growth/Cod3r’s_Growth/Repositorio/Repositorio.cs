@@ -34,9 +34,9 @@ namespace Cod3r_s_Growth.Repositorio
             _listaCelular.Remove(celularDeletar);
         }
 
-        public Celular? ObterPorId(int id)
+        public Celular ObterPorId(int id)
         {
-            return _listaCelular.FirstOrDefault(c => c.Id == id);
+            return _listaCelular.Where(c => c.Id.Equals(id)).FirstOrDefault();
         }
 
         public BindingList<Celular> ObterTodos()

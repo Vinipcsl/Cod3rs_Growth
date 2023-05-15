@@ -7,18 +7,32 @@ namespace Cod3r_s_Growth
     public partial class CadastroCelular : Form
     {
         private readonly IRepositorio repositorio;
-        public BindingList<Celular> _listaCelulares;
-        public Celular? _celular;
+        public BindingList<Celular> _listaCelulares = Singleton.Instancia();
+        public Celular _celular = new();
         private static List<string> listaDeErros = new();
         private static Singleton singleton;
+        private readonly int _id;
+        private int _celularVazio = 0;
 
-        public CadastroCelular(BindingList<Celular> celulars, Celular celular)
+        public CadastroCelular(BindingList<Celular> celulars, int id)
         {
             InitializeComponent();
-            PreencherCampos(celular);
+            _id = id;
+
+            ObterCelularSeExistir(id);
+            PreencherCampos(_celular);
             _listaCelulares = celulars;
-            _celular = celular;
             repositorio = new Repositorio.Repositorio();
+        }
+
+        private void ObterCelularSeExistir(int id)
+        {
+            if (id != _celularVazio)
+            {
+                _celular = _listaCelulares
+                    .FirstOrDefault(celular => celular.Id == id)
+                        ?? throw new Exception($"Celular não encontrado [{id}]");
+            }
         }
 
         private void AoClicarEmSalvar(object sender, EventArgs e)
@@ -26,7 +40,7 @@ namespace Cod3r_s_Growth
             try
             {
                 ValidarCampos();
-                if (_celular != null)
+                if (_id != _celularVazio)
                 {
                     AtualizarCelular();
                     repositorio.Atualizar(_celular.Id, _celular);
@@ -36,7 +50,7 @@ namespace Cod3r_s_Growth
                 }
                 else
                 {
-                    var celular = ConverterCelular();
+                    var celular = ConverterEmCelular();
                     repositorio.Adicionar(celular);
                     Close();
                     MessageBox.Show("Celular cadastrado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -49,7 +63,7 @@ namespace Cod3r_s_Growth
             }
         }
 
-        private Celular ConverterCelular()
+        private Celular ConverterEmCelular()
         {
             Celular celular = new()
             {
@@ -60,6 +74,7 @@ namespace Cod3r_s_Growth
                 Memoria = Convert.ToInt32(TextoMemoria.Text),
                 AnoFabricacao = Convert.ToDateTime(DataFabricado.Text)
             };
+
             return celular;
         }
 
@@ -69,23 +84,25 @@ namespace Cod3r_s_Growth
             _celular.Modelo = TextoModelo.Text;
             _celular.Cor = TextoCor.Text;
             _celular.Memoria = Convert.ToInt32(TextoMemoria.Text);
-            _celular.AnoFabricacao = Convert.ToDateTime(DataFabricado.Text);            
+            _celular.AnoFabricacao = Convert.ToDateTime(DataFabricado.Text);
         }
 
         private void PreencherCampos(Celular celular)
         {
-            if (celular != null)
+            var idExiste = _id > 0;
+
+            if (idExiste)
             {
                 TextoMarca.Text = celular.Marca;
                 TextoModelo.Text = celular.Modelo;
                 TextoCor.Text = celular.Cor;
                 TextoMemoria.Text = celular.Memoria.ToString();
-                DataFabricado.Text = celular.AnoFabricacao.ToString();
             }
         }
 
         private void ValidarCampos()
         {
+            const int valorMinimo = 0;
             listaDeErros.Clear();
 
             if (string.IsNullOrEmpty(TextoMarca.Text))
@@ -108,7 +125,7 @@ namespace Cod3r_s_Growth
             {
                 listaDeErros.Add("Por favor, preencha o data!");
             }
-            if (listaDeErros.Count > 0)
+            if (listaDeErros.Count > valorMinimo)
             {
                 var _listaDeErros = string.Join("\n", listaDeErros);
                 throw new Exception(_listaDeErros);
@@ -117,6 +134,9 @@ namespace Cod3r_s_Growth
 
         private void AoClicarEmCancelar(object sender, EventArgs e)
         {
+            //pra comentar eu uso ctrl+k e ctrl+c
+            //pra descomentar é ctrl+k e ctrl+u
+
             DialogResult dialogResult = MessageBox.Show("Deseja mesmo cancelar a opreação?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
