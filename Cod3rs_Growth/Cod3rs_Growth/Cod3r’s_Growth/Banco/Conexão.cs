@@ -2,6 +2,7 @@
 
 namespace Cod3r_s_Growth.Banco
 {
+    [Migration(20230517083200)]
     public class Conexão : Migration
     {
         public override void Up()

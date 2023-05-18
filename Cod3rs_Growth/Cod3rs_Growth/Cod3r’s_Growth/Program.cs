@@ -7,6 +7,7 @@ using FluentMigrator.Runner;
 
 
 using Microsoft.Extensions.DependencyInjection;
+using Cod3r_s_Growth.Banco;
 
 namespace Cod3r_s_Growth
 {
@@ -25,15 +26,18 @@ namespace Cod3r_s_Growth
             Application.Run(new ListaCelular());
         }
 
+        static string CadastroCelular = ConfigurationManager.ConnectionStrings["CodersGrowth"].ConnectionString;
+
+
         private static ServiceProvider CreateServices()
         {
             return new ServiceCollection()
                 
                 .AddFluentMigratorCore()
-                .ConfigureRunner(rb => rb
-                .AddSQLite()
-                .WithGlobalConnectionString("Data Source=test.db")
-                .ScanIn(typeof(AddLogTable).Assembly).For.Migrations())
+                .ConfigureRunner(rb => rb               
+                .AddSqlServer2016()
+                .WithGlobalConnectionString("Data Source=INVENT023;Initial Catalog=CodersGrowth;User ID=sa;Password=sap@123")
+                .ScanIn(typeof(Conexão).Assembly).For.Migrations())
                 .AddLogging(lb => lb.AddFluentMigratorConsole())
                 .BuildServiceProvider(false);
         }
