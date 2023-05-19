@@ -83,7 +83,7 @@ namespace Cod3r_s_Growth
 
         public void CarregarTela()
         {
-            dataGridView2.DataSource = null;
+            
             dataGridView2.DataSource = repositorioDoBanco.ObterTodos();
         }
     }

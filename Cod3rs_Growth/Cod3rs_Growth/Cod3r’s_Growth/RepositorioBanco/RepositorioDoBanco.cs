@@ -30,30 +30,20 @@ namespace Cod3r_s_Growth.RepositorioBanco
                     command.Parameters.AddWithValue("@AnoFabricado", novoCelular.AnoFabricacao);
                     command.ExecuteNonQuery();
                 }
-             
+
             }
         }
 
         public void Atualizar(int id, Celular novoCelular)
         {
-            string sql = "Update Celulares (Marca,Modelo,Cor,Memoria,AnoFabricado)" +
-                "Values" +
-                "(@Marca,@Modelo,@Cor,@Memoria,@AnoFabricado)";
+            string sql = $"Update Celulares Set Marca='{novoCelular.Marca}', Modelo='{novoCelular.Modelo}', Cor='{novoCelular.Cor}', Memoria='{novoCelular.Memoria}', AnoFabricado='{novoCelular.AnoFabricacao}' Where Id='{novoCelular.Id}'";
 
             using (SqlConnection connection = new SqlConnection(CadastroCelular))
             {
                 connection.Open();
                 SqlCommand command = new(sql, connection);
-                {
-                    command.Parameters.AddWithValue("@Marca", novoCelular.Marca);
-                    command.Parameters.AddWithValue("@Modelo", novoCelular.Modelo);
-                    command.Parameters.AddWithValue("@Cor", novoCelular.Cor);
-                    command.Parameters.AddWithValue("@Memoria", novoCelular.Memoria);
-                    command.Parameters.AddWithValue("@AnoFabricado", novoCelular.AnoFabricacao);
-                    command.ExecuteNonQuery();
-                }
-            }   
-
+                command.ExecuteNonQuery();
+            }
         }
 
         public void Deletar(int id)
