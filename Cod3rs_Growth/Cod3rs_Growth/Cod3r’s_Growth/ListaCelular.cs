@@ -40,6 +40,7 @@ namespace Cod3r_s_Growth
                         repositorioDoBanco.Deletar(idCelular);
                         MessageBox.Show("Celular removido com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                    CarregarTela();
                 }
             }
             catch (Exception ex)
@@ -83,7 +84,7 @@ namespace Cod3r_s_Growth
 
         public void CarregarTela()
         {
-            
+            dataGridView2.DataSource = null;
             dataGridView2.DataSource = repositorioDoBanco.ObterTodos();
         }
     }
