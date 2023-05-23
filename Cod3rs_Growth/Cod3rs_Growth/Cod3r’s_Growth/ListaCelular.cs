@@ -1,4 +1,5 @@
 using Cod3r_s_Growth.Repositorio;
+using Cod3r_s_Growth.RepositorioBanco;
 using Modelo_de_Dados;
 using System.ComponentModel;
 
@@ -8,18 +9,21 @@ namespace Cod3r_s_Growth
     public partial class ListaCelular : Form
     {
         public static BindingList<Celular> listaDeCelular = Singleton.Instancia();
-        public IRepositorio repositorioDoBanco = new RepositorioBanco.RepositorioDoBanco();
+        public IRepositorio repositorioDoBanco ;
 
-        public ListaCelular()
+        public ListaCelular(IRepositorio repositorio)
         {
             InitializeComponent();
+            repositorioDoBanco = repositorio;
             CarregarTela();
+
         }
+
 
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
             int GuardarId = 0;
-            CadastroCelular cadastroCelular = new(listaDeCelular, GuardarId);
+            CadastroCelular cadastroCelular = new(listaDeCelular, GuardarId, repositorioDoBanco);
             cadastroCelular.ShowDialog();
             CarregarTela();
         }
@@ -57,7 +61,7 @@ namespace Cod3r_s_Growth
 
                 var idCelular = (int)dataGridView2.CurrentRow.Cells[0].Value;
                 var celular = listaDeCelular.FirstOrDefault(celular => celular.Id == idCelular);
-                CadastroCelular cadastroCelular = new(listaDeCelular, celular.Id);
+                CadastroCelular cadastroCelular = new(listaDeCelular, celular.Id, repositorioDoBanco);
                 cadastroCelular.ShowDialog();
                 CarregarTela();
             }

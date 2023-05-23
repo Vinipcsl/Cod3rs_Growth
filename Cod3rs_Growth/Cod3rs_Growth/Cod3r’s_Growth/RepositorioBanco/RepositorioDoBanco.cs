@@ -7,7 +7,6 @@ namespace Cod3r_s_Growth.RepositorioBanco
 {
     internal class RepositorioDoBanco : IRepositorio
     {
-
         static string CadastroCelular = ConfigurationManager.ConnectionStrings["CodersGrowth"].ConnectionString;
         public BindingList<Celular> _listaCelulares = Singleton.Instancia();
 
@@ -65,7 +64,6 @@ namespace Cod3r_s_Growth.RepositorioBanco
 
             using (SqlConnection connection = new SqlConnection(CadastroCelular))
             {
-
                 connection.Open();
                 SqlCommand command = new(sql, connection);
                 SqlDataReader read = command.ExecuteReader();
