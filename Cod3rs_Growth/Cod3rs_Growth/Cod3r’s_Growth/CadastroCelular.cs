@@ -6,7 +6,7 @@ namespace Cod3r_s_Growth
 {
     public partial class CadastroCelular : Form
     {
-        private readonly IRepositorio repositorio;
+        public IRepositorio repositorio = new RepositorioBanco.RepositorioDoBanco();
         public BindingList<Celular> _listaCelulares = Singleton.Instancia();
         public Celular _celular = new();
         private static List<string> listaDeErros = new();
@@ -22,7 +22,7 @@ namespace Cod3r_s_Growth
             ObterCelularSeExistir(id);
             PreencherCampos(_celular);
             _listaCelulares = celulars;
-            repositorio = new Repositorio.Repositorio();
+            repositorio = new RepositorioBanco.RepositorioDoBanco();
         }
 
         private void ObterCelularSeExistir(int id)

@@ -8,7 +8,7 @@ namespace Cod3r_s_Growth
     public partial class ListaCelular : Form
     {
         public static BindingList<Celular> listaDeCelular = Singleton.Instancia();
-        public IRepositorio repositorio = new Repositorio.Repositorio();
+        public IRepositorio repositorioDoBanco = new RepositorioBanco.RepositorioDoBanco();
 
         public ListaCelular()
         {
@@ -37,9 +37,10 @@ namespace Cod3r_s_Growth
                 {
                     if (celular != null)
                     {
-                        repositorio.Deletar(idCelular);
+                        repositorioDoBanco.Deletar(idCelular);
                         MessageBox.Show("Celular removido com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                    CarregarTela();
                 }
             }
             catch (Exception ex)
@@ -84,7 +85,7 @@ namespace Cod3r_s_Growth
         public void CarregarTela()
         {
             dataGridView2.DataSource = null;
-            dataGridView2.DataSource = repositorio.ObterTodos();
+            dataGridView2.DataSource = repositorioDoBanco.ObterTodos();
         }
     }
 }
