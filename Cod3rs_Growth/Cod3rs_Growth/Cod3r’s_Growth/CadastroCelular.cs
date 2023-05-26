@@ -6,15 +6,14 @@ namespace Cod3r_s_Growth
 {
     public partial class CadastroCelular : Form
     {
-        public IRepositorio repositorio = new RepositorioBanco.RepositorioDoBanco();
-        public BindingList<Celular> _listaCelulares = Singleton.Instancia();
-        public Celular _celular = new();
+        private BindingList<Celular> _listaCelulares = Singleton.Instancia();
+        private Celular _celular = new();
         private static List<string> listaDeErros = new();
-        private static Singleton singleton;
         private readonly int _id;
         private int _celularVazio = 0;
+        private readonly IRepositorio _repositorioDoBanco;
 
-        public CadastroCelular(BindingList<Celular> celulars, int id)
+        public CadastroCelular(BindingList<Celular> celulars, int id, IRepositorio repositorio)
         {
             InitializeComponent();
             _id = id;
@@ -22,7 +21,7 @@ namespace Cod3r_s_Growth
             ObterCelularSeExistir(id);
             PreencherCampos(_celular);
             _listaCelulares = celulars;
-            repositorio = new RepositorioBanco.RepositorioDoBanco();
+            _repositorioDoBanco = repositorio;
         }
 
         private void ObterCelularSeExistir(int id)
@@ -43,18 +42,16 @@ namespace Cod3r_s_Growth
                 if (_id != _celularVazio)
                 {
                     AtualizarCelular();
-                    repositorio.Atualizar(_celular.Id, _celular);
+                    _repositorioDoBanco.Atualizar(_celular.Id, _celular);
                     Close();
                     MessageBox.Show("Celular atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
                 else
                 {
                     var celular = ConverterEmCelular();
-                    repositorio.Adicionar(celular);
+                    _repositorioDoBanco.Adicionar(celular);
                     Close();
                     MessageBox.Show("Celular cadastrado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
             }
             catch (Exception ex)
@@ -134,9 +131,6 @@ namespace Cod3r_s_Growth
 
         private void AoClicarEmCancelar(object sender, EventArgs e)
         {
-            //pra comentar eu uso ctrl+k e ctrl+c
-            //pra descomentar é ctrl+k e ctrl+u
-
             DialogResult dialogResult = MessageBox.Show("Deseja mesmo cancelar a opreação?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
