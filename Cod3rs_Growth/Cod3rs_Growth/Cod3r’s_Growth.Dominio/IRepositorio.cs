@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Security.Permissions;
 
-namespace Cod3r_s_Growth.Repositorio
+namespace Cod3r_s_Growth.Dominio.Repositorio
 {
     public interface IRepositorio
     {        

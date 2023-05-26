@@ -1,5 +1,6 @@
-using Cod3r_s_Growth.Repositorio;
-using Cod3r_s_Growth.RepositorioBanco;
+
+using Cod3r_s_Growth.Dominio.Repositorio;
+using Cod3r_s_Growth.Infra;
 using Modelo_de_Dados;
 using System.ComponentModel;
 
@@ -16,9 +17,7 @@ namespace Cod3r_s_Growth
             InitializeComponent();
             repositorioDoBanco = repositorio;
             CarregarTela();
-
         }
-
 
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {

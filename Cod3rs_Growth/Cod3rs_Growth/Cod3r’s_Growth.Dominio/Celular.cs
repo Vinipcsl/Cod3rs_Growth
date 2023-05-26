@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace Modelo_de_Dados
 {
     public class Celular

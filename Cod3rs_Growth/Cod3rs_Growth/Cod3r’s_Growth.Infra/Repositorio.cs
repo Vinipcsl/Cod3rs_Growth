@@ -1,7 +1,9 @@
-﻿using Modelo_de_Dados;
+﻿using Cod3r_s_Growth.Dominio.Repositorio;
+using Modelo_de_Dados;
 using System.ComponentModel;
+using System.Linq;
 
-namespace Cod3r_s_Growth.Repositorio
+namespace Cod3r_s_Growth.Infra.Repositorio
 {
     internal class Repositorio : IRepositorio
     {

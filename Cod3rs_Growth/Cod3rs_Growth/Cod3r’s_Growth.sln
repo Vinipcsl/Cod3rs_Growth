@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cod3r’s_Growth.Dominio", "Cod3r’s_Growth.Dominio\Cod3r’s_Growth.Dominio.csproj", "{9128AA45-30A2-47C5-AD1D-86279BC92254}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cod3r’s_Growth.Infra", "Cod3r’s_Growth.Infra\Cod3r’s_Growth.Infra.csproj", "{377B3046-DE64-46A2-B375-1D16827EE74A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +24,14 @@ Global
 		{C2EDF933-63FA-4A81-9838-065A6FC47B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2EDF933-63FA-4A81-9838-065A6FC47B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2EDF933-63FA-4A81-9838-065A6FC47B5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9128AA45-30A2-47C5-AD1D-86279BC92254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9128AA45-30A2-47C5-AD1D-86279BC92254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9128AA45-30A2-47C5-AD1D-86279BC92254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9128AA45-30A2-47C5-AD1D-86279BC92254}.Release|Any CPU.Build.0 = Release|Any CPU
+		{377B3046-DE64-46A2-B375-1D16827EE74A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{377B3046-DE64-46A2-B375-1D16827EE74A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{377B3046-DE64-46A2-B375-1D16827EE74A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{377B3046-DE64-46A2-B375-1D16827EE74A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,11 +1,13 @@
-﻿using Cod3r_s_Growth.Repositorio;
-using Modelo_de_Dados;
+﻿using Modelo_de_Dados;
 using System.ComponentModel;
 using System.Configuration;
 using Microsoft.Data.SqlClient;
-namespace Cod3r_s_Growth.RepositorioBanco
+using Cod3r_s_Growth.Dominio.Repositorio;
+using System;
+
+namespace Cod3r_s_Growth.Infra.RepositorioBanco
 {
-    internal class RepositorioDoBanco : IRepositorio
+    public class RepositorioDoBanco : IRepositorio
     {
         static string CadastroCelular = ConfigurationManager.ConnectionStrings["CodersGrowth"].ConnectionString;
         public BindingList<Celular> _listaCelulares = Singleton.Instancia();
@@ -29,7 +31,6 @@ namespace Cod3r_s_Growth.RepositorioBanco
                     command.Parameters.AddWithValue("@AnoFabricado", novoCelular.AnoFabricacao);
                     command.ExecuteNonQuery();
                 }
-
             }
         }
 
@@ -79,7 +80,6 @@ namespace Cod3r_s_Growth.RepositorioBanco
                         Cor = (string)read.GetString(3),
                         Memoria = (int)read.GetInt32(4),
                         AnoFabricacao = (DateTime)read.GetDateTime(5),
-
                     };
                     celular = celularId;
                 }
@@ -109,7 +109,6 @@ namespace Cod3r_s_Growth.RepositorioBanco
                         Cor = (string)read.GetString(3),
                         Memoria = (int)read.GetInt32(4),
                         AnoFabricacao = (DateTime)read.GetDateTime(5),
-
                     };
                     _listaCelulares.Add(celular);
                 }
