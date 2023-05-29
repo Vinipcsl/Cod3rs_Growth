@@ -2,7 +2,7 @@
 using System.ComponentModel;
 
 
-namespace Cod3r_s_Growth
+namespace Cod3r_s_Growth.Infra
 {
     public sealed class Singleton
     {

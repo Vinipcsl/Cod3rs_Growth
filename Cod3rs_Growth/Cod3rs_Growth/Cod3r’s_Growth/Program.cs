@@ -1,13 +1,10 @@
-using System;
-using System.Linq;
 using System.Configuration;
-using System.Windows.Forms;
 using FluentMigrator.Runner;
 using Microsoft.Extensions.DependencyInjection;
-using Cod3r_s_Growth.Banco;
-using Cod3r_s_Growth.Repositorio;
-using Cod3r_s_Growth.RepositorioBanco;
 using Microsoft.Extensions.Hosting;
+using Cod3r_s_Growth.Dominio.Repositorio;
+using Cod3r_s_Growth.Infra.Banco;
+using Cod3r_s_Growth.Infra.RepositorioBanco;
 
 namespace Cod3r_s_Growth
 {
@@ -16,7 +13,6 @@ namespace Cod3r_s_Growth
         [STAThread]
         static void Main()
         {
-
             using (var serviceProvider = CreateServices())
             using (var scope = serviceProvider.CreateScope())
             {
