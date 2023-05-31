@@ -27,7 +27,7 @@ namespace Cod3r_s_Growth
             Application.Run(new ListaCelular(repositorio));
         }
 
-        static string CadastroCelular = ConfigurationManager.ConnectionStrings["CodersGrowth"].ConnectionString;
+        static string CadastroCelular = ConfigurationManager.ConnectionStrings["CadastroCelular"].ConnectionString;
 
         private static ServiceProvider CreateServices()
         {
