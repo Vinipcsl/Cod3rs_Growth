@@ -4,6 +4,7 @@ using System.Configuration;
 using Microsoft.Data.SqlClient;
 using Cod3r_s_Growth.Dominio.Repositorio;
 using System;
+using System.Linq;
 
 namespace Cod3r_s_Growth.Infra.RepositorioBanco
 {

@@ -21,14 +21,20 @@ namespace Cod3r_s_Growth.Infra
         {
             using var conexao2db = Conexao();
             conexao2db.Insert(novoCelular);
-
         }
 
         public void Atualizar(int id, Celular novoCelular)
         {
             using var conexao2db = Conexao();
-            conexao2db.Update(novoCelular);
-            
+            try
+            {
+                novoCelular.Id = id;
+                conexao2db.Update(novoCelular);
+            }        
+            catch 
+            {
+                throw new Exception("Erro ao atualizar");
+            }
         }
 
         public void Deletar(int id)
@@ -54,8 +60,9 @@ namespace Cod3r_s_Growth.Infra
 
         public DataConnection Conexao()
         {
-            string CadastroCelular = ConfigurationManager.ConnectionStrings["CadastroCelular"].ConnectionString;
-            DataConnection conexao = SqlServerTools.CreateDataConnection(CadastroCelular);
+           var conexao = new DataConnection(
+               new DataOptions()
+               .UseSqlServer("Data Source=INVENT023;Initial Catalog=CodersGrowth;User ID=sa;Password=sap@123"));
             return conexao;
         }
     }

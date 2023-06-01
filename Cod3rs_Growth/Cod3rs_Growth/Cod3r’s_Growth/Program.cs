@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Cod3r_s_Growth.Dominio.Repositorio;
 using Cod3r_s_Growth.Infra.Banco;
 using Cod3r_s_Growth.Infra.RepositorioBanco;
+using Cod3r_s_Growth.Infra;
 
 namespace Cod3r_s_Growth
 {
@@ -54,7 +55,7 @@ namespace Cod3r_s_Growth
             return Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
-                    services.AddScoped<IRepositorio, RepositorioDoBanco>();
+                    services.AddScoped<IRepositorio, Linq2DB>();
                 });
         }
     }
