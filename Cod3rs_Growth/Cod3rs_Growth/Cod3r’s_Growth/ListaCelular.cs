@@ -10,6 +10,8 @@ namespace Cod3r_s_Growth
     public partial class ListaCelular : Form
     {
         public IRepositorio repositorio;
+        readonly int linhaVazia = 0;
+        readonly int maisDeUmaLinha = 1;
 
         public ListaCelular(IRepositorio repositorio)
         {
@@ -82,12 +84,12 @@ namespace Cod3r_s_Growth
         private void ValidarQuantidadeDeLinhasSelecionadas()
         {
             string mensagemDeErro;
-            if (dataGridView2.SelectedRows.Count == 0)
+            if (dataGridView2.SelectedRows.Count == linhaVazia)
             {
                 mensagemDeErro = "Operação inválida! \nNenhuma linha selecionada!";
                 throw new Exception(mensagemDeErro);
             }
-            if (dataGridView2.SelectedRows.Count > 1)
+            if (dataGridView2.SelectedRows.Count > maisDeUmaLinha)
             {
                 mensagemDeErro = "Operação inválida! \nSelecione apenas uma linha!";
                 throw new Exception(mensagemDeErro);
