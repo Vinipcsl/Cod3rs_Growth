@@ -9,20 +9,21 @@ namespace Cod3r_s_Growth
 {
     public partial class ListaCelular : Form
     {
-        public static BindingList<Celular> listaDeCelular = Singleton.Instancia();
-        public IRepositorio repositorioDoBanco ;
+        public IRepositorio repositorio;
+        readonly int linhaVazia = 0;
+        readonly int maisDeUmaLinha = 1;
 
         public ListaCelular(IRepositorio repositorio)
         {
             InitializeComponent();
-            repositorioDoBanco = repositorio;
+            this.repositorio = repositorio;
             CarregarTela();
         }
 
         private void AoClicarEmCadastrar(object sender, EventArgs e)
         {
             int GuardarId = 0;
-            CadastroCelular cadastroCelular = new(listaDeCelular, GuardarId, repositorioDoBanco);
+            CadastroCelular cadastroCelular = new(null, GuardarId, repositorio);
             cadastroCelular.ShowDialog();
             CarregarTela();
         }
@@ -33,14 +34,17 @@ namespace Cod3r_s_Growth
             {
                 ValidarQuantidadeDeLinhasSelecionadas();
                 var idCelular = (int)dataGridView2.CurrentRow.Cells[0].Value;
-                var celular = listaDeCelular.FirstOrDefault(celular => celular.Id == idCelular);
+                var listaCelulares = repositorio.ObterTodos();
+
+                var celular = listaCelulares
+                    .FirstOrDefault(celular => celular.Id == idCelular);
 
                 DialogResult dialogResult = MessageBox.Show("Deseja mesmo apagar? \nNão será possível recuperar as informações!", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     if (celular != null)
                     {
-                        repositorioDoBanco.Deletar(idCelular);
+                        repositorio.Deletar(idCelular);
                         MessageBox.Show("Celular removido com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     CarregarTela();
@@ -59,9 +63,16 @@ namespace Cod3r_s_Growth
                 ValidarQuantidadeDeLinhasSelecionadas();
 
                 var idCelular = (int)dataGridView2.CurrentRow.Cells[0].Value;
-                var celular = listaDeCelular.FirstOrDefault(celular => celular.Id == idCelular);
-                CadastroCelular cadastroCelular = new(listaDeCelular, celular.Id, repositorioDoBanco);
-                cadastroCelular.ShowDialog();
+                var listaCelulares = repositorio.ObterTodos();
+
+                var celular = listaCelulares.FirstOrDefault(celular => celular.Id == idCelular) ?? 
+                    throw new Exception($"Não foi encontrado celular com Id: {idCelular}");
+
+                using (CadastroCelular cadastroCelular = new(celular, celular.Id, repositorio))
+                {
+                    cadastroCelular.ShowDialog();
+                }
+
                 CarregarTela();
             }
             catch (Exception ex)
@@ -73,12 +84,12 @@ namespace Cod3r_s_Growth
         private void ValidarQuantidadeDeLinhasSelecionadas()
         {
             string mensagemDeErro;
-            if (dataGridView2.SelectedRows.Count == 0)
+            if (dataGridView2.SelectedRows.Count == linhaVazia)
             {
                 mensagemDeErro = "Operação inválida! \nNenhuma linha selecionada!";
                 throw new Exception(mensagemDeErro);
             }
-            if (dataGridView2.SelectedRows.Count > 1)
+            if (dataGridView2.SelectedRows.Count > maisDeUmaLinha)
             {
                 mensagemDeErro = "Operação inválida! \nSelecione apenas uma linha!";
                 throw new Exception(mensagemDeErro);
@@ -88,7 +99,7 @@ namespace Cod3r_s_Growth
         public void CarregarTela()
         {
             dataGridView2.DataSource = null;
-            dataGridView2.DataSource = repositorioDoBanco.ObterTodos();
+            dataGridView2.DataSource = repositorio.ObterTodos();
         }
     }
 }

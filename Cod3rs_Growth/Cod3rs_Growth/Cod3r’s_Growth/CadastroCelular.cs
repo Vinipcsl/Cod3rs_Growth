@@ -7,31 +7,18 @@ namespace Cod3r_s_Growth
 {
     public partial class CadastroCelular : Form
     {
-        private BindingList<Celular> _listaCelulares = Singleton.Instancia();
         private Celular _celular = new();
         private static List<string> listaDeErros = new();
         private readonly int _id;
         private int _celularVazio = 0;
-        private readonly IRepositorio _repositorioDoBanco;
+        private readonly IRepositorio _repositorio;
 
-        public CadastroCelular(BindingList<Celular> celulars, int id, IRepositorio repositorio)
+        public CadastroCelular(Celular celular, int id, IRepositorio repositorio)
         {
             InitializeComponent();
             _id = id;
-            ObterCelularSeExistir(id);
-            PreencherCampos(_celular);
-            _listaCelulares = celulars;
-            _repositorioDoBanco = repositorio;
-        }
-
-        private void ObterCelularSeExistir(int id)
-        {
-            if (id != _celularVazio)
-            {
-                _celular = _listaCelulares
-                    .FirstOrDefault(celular => celular.Id == id)
-                        ?? throw new Exception($"Celular não encontrado [{id}]");
-            }
+            PreencherCampos(celular);
+            _repositorio = repositorio;
         }
 
         private void AoClicarEmSalvar(object sender, EventArgs e)
@@ -42,14 +29,14 @@ namespace Cod3r_s_Growth
                 if (_id != _celularVazio)
                 {
                     AtualizarCelular();
-                    _repositorioDoBanco.Atualizar(_celular.Id, _celular);
+                    _repositorio.Atualizar(_id, _celular);
                     Close();
                     MessageBox.Show("Celular atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     var celular = ConverterEmCelular();
-                    _repositorioDoBanco.Adicionar(celular);
+                    _repositorio.Adicionar(celular);
                     Close();
                     MessageBox.Show("Celular cadastrado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -76,7 +63,7 @@ namespace Cod3r_s_Growth
         }
 
         private void AtualizarCelular()
-        {
+        {           
             _celular.Marca = TextoMarca.Text;
             _celular.Modelo = TextoModelo.Text;
             _celular.Cor = TextoCor.Text;
